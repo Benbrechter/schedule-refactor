@@ -3,10 +3,13 @@
 // in the html.
 
 $(function () {
-  var currentHour = dayjs().format('HH')
-  var today = dayjs().format('dddd, MMMM D, YYYY hh: mm')
+ 
+  function currentTime(){
+  var today = dayjs().format('dddd, MMMM D, YYYY [at] hh: mm: ss')
   $('#currentDay').text(today);
+  } // I had to wrap this in a function so I could set a timer interval on it
 
+  var currentHour = dayjs().format('HH')
 
   function hourColor(){
   $('.time-block').each(function(){
@@ -18,9 +21,9 @@ $(function () {
   });
   }
 
-function refreshColor(){
+//function refreshColor(){
 
-}
+//}
 
 
 
@@ -62,4 +65,5 @@ $(this).children('.description').val(value);
   // TODO: Add code to display the current date in the header of the page.
   hourColor();
   textEntry();
+  setInterval(currentTime, 1000)
 });
