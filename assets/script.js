@@ -10,13 +10,19 @@ $(function () {
   } // I had to wrap this in a function so I could set a timer interval on it
 
   var currentHour = dayjs().format('HH')
+console.log(currentHour);
 
   function hourColor(){
   $('.time-block').each(function(){
  const blockHour = parseInt(this.id);
- $(this).toggleClass('past', blockHour < currentHour);
- $(this).toggleClass('present', blockHour === currentHour);
- $(this).toggleClass('future', blockHour > currentHour);
+ console.log(blockHour)
+ if(blockHour < currentHour){
+  $(this).addClass('past')
+ }else if(blockHour === currentHour){
+  $(this).addClass('present')
+ }else{
+  $(this).addClass('future')
+ }
 
   });
   }
@@ -45,12 +51,6 @@ $(this).children('.description').val(value);
 
 
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  
 
 
 
