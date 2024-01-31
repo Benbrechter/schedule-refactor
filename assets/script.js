@@ -5,31 +5,28 @@
 $(function () {
  
   function currentTime(){
-  var today = dayjs().format('dddd, MMMM D, YYYY [at] hh: mm: ss')
+  var today = dayjs().format('dddd, MMMM D, YYYY [at] hh: mm: ss a')
   $('#currentDay').text(today);
   } // I had to wrap this in a function so I could set a timer interval on it
 
   var currentHour = dayjs().format('HH')
-console.log(currentHour);
 
   function hourColor(){
   $('.time-block').each(function(){
  const blockHour = parseInt(this.id);
- console.log(blockHour)
+ 
  if(blockHour < currentHour){
   $(this).addClass('past')
- }else if(blockHour === currentHour){
+ }else if(blockHour == currentHour){
   $(this).addClass('present')
- }else{
+ }else if (blockHour > currentHour){
   $(this).addClass('future')
  }
 
   });
   }
 
-//function refreshColor(){
 
-//}
 
 
 
